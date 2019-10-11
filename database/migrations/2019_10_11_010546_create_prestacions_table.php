@@ -13,9 +13,11 @@ class CreatePrestacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prestacions', function (Blueprint $table) {
+        Schema::create('prestaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +28,6 @@ class CreatePrestacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prestacions');
+        Schema::dropIfExists('prestaciones');
     }
 }

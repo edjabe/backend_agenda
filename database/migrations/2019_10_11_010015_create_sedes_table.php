@@ -15,7 +15,11 @@ class CreateSedesTable extends Migration
     {
         Schema::create('sedes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('direccion')->nullable();
+            $table->string('telefono')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
