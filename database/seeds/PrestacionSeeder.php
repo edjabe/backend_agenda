@@ -12,19 +12,28 @@ class PrestacionSeeder extends Seeder
     public function run()
     {
         $prestacion = factory(App\Models\Prestacion::class)->create([
-            "nombre" => "Medicina general"
+            "nombre" => "Medicina general",
+            "sede_id" => 1
         ]);
 
         $prestacion = factory(App\Models\Prestacion::class)->create([
-            "nombre" => "Odontología"
+            "nombre" => "Odontologia",
+            "sede_id" => 1
         ]);
 
         $prestacion = factory(App\Models\Prestacion::class)->create([
-            "nombre" => "Oftalmología"
+            "nombre" => "Oftalmologia",
+            "sede_id" => 2
         ]);
 
         $prestacion = factory(App\Models\Prestacion::class)->create([
-            "nombre" => "Pediatría"
+            "nombre" => "Pediatria",
+            "sede_id" => 1
+        ]);
+
+        $prestacion = factory(App\Models\Prestacion::class)->create([
+            "nombre" => "Pediatria",
+            "sede_id" => 2
         ]);
     }
 }

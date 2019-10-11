@@ -14,7 +14,9 @@ class PrestacionController extends Controller
      */
     public function index()
     {
-        //
+        $prestaciones = Prestacion::all('id', 'nombre', 'sede_id');
+
+        return response()->json(['prestaciones' => $prestaciones], 200);
     }
 
     /**

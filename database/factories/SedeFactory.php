@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Sede::class, function (Faker $faker) {
     return [
-        'nombre' => $faker->cityPrefix,
+        'nombre' => $faker->unique()->cityPrefix,
         'telefono' => $faker->phoneNumber,
         'direccion' => $faker->address
     ];

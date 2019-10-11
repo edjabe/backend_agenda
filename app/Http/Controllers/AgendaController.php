@@ -14,7 +14,18 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        //
+        $disponibilidad = Agenda::all();
+
+        $arreglo = [];
+        $i= 0;
+        foreach ($disponibilidad as $key => $value) {
+            $arreglo[$i][$value->prestacion->sede->id][$value->prestacion->id][$value->dia]['hora_inicial'] = $value->hora_inicial;
+            $arreglo[$i][$value->prestacion->sede->id][$value->prestacion->id][$value->dia]['hora_final'] = $value->hora_final;
+            $arreglo[$i][$value->prestacion->sede->id][$value->prestacion->id][$value->dia]['intervalos'] = json_decode($value->intervalos);
+            $i++;
+        }
+
+        return response()->json(['disponibilidad' => $arreglo], 200);
     }
 
     /**

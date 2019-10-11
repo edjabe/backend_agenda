@@ -14,7 +14,9 @@ class SedeController extends Controller
      */
     public function index()
     {
-        //
+        $sedes = Sede::all('id', 'nombre');
+
+        return response()->json(['sedes' => $sedes], 200);
     }
 
     /**

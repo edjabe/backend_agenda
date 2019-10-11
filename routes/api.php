@@ -15,7 +15,20 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'v1'], function () {
     Route::post('login', 'Auth\AuthApiController@login');
 
-    Route::group(['middleware' => ['auth.jwt']], function () {
+    Route::group(['middleware' => ['jwt.auth']], function () {
+
+        Route::prefix('sedes')->group(function () {
+            Route::get('/', 'SedeController@index');
+        });
+
+        Route::prefix('prestaciones')->group(function () {
+            Route::get('/', 'PrestacionController@index');
+        });
+
+        Route::prefix('disponibilidad')->group(function () {
+            Route::get('/', 'AgendaController@index');
+        });
+
         Route::prefix('login')->group(function () {
             Route::post('/refresh', 'Auth\AuthApiController@refresh');
             Route::post('logout', 'Auth\AuthApiController@logout');

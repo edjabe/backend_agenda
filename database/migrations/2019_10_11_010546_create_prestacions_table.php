@@ -16,8 +16,12 @@ class CreatePrestacionsTable extends Migration
         Schema::create('prestaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
+            $table->bigInteger('sede_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('sede_id')->references('id')->on('sedes');
+            $table->unique(array('nombre', 'sede_id'));
         });
     }
 
