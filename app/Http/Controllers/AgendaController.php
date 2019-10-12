@@ -12,9 +12,13 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $disponibilidad = Agenda::all();
+        $disponibilidad = Agenda::where(function ($query) use ($request) {
+            if (isset($request->prestacion_id)) {
+                $query->where('prestacion_id',$request->prestacion_id);
+            }
+        })->get();
 
         $arreglo = [];
         $i= 0;

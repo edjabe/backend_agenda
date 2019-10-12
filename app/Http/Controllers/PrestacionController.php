@@ -12,9 +12,14 @@ class PrestacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $prestaciones = Prestacion::all('id', 'nombre', 'sede_id');
+
+        $prestaciones = Prestacion::where(function ($query) use ($request) {
+            if (isset($request->sede_id)) {
+                $query->where('sede_id',$request->sede_id);
+            }
+        })->get(['id', 'nombre', 'sede_id']);
 
         return response()->json(['prestaciones' => $prestaciones], 200);
     }
