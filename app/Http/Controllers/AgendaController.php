@@ -18,7 +18,7 @@ class AgendaController extends Controller
             if (isset($request->prestacion_id)) {
                 $query->where('prestacion_id',$request->prestacion_id);
             }
-        })->get();
+        })->orderBy('dia', 'asc')->get();
 
         $arreglo = [];
         $i= 0;

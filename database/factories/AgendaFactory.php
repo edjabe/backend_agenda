@@ -22,7 +22,8 @@ $factory->define(App\Models\Agenda::class, function (Faker $faker) {
 
         	while($hora_inicial->lte($hora_final) && $i < $turnos) {
         		$hora_inicial = $hora_inicial->addMinutes(60);
-        		$intervalos[] = $hora_inicial->format('Y-m-d H:i:s');
+        		$intervalos[$i]['hora'] = $hora_inicial->format('Y-m-d H:i:s');
+        		$intervalos[$i]['disponible'] = $faker->numberBetween($min = 0, $max = 1);
         		$i++;
         	}
 
